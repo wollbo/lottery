@@ -12,7 +12,7 @@ from brownie import (
 FORKED_LOCAL_ENVIRONMENTS = ["mainnet-fork", "mainnet-fork-dev"]
 LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["development", "ganache-local"]
 DECIMALS = 8
-INITIAL_VALUE = 4000
+INITIAL_VALUE = 4000 * 10**DECIMALS
 
 
 contract_to_mock = {
@@ -73,7 +73,7 @@ def get_contract(contract_name):
             deploy_mocks()
         contract = contract_type[-1]
     else:
-        contract_address = config["networks"]["network.show_active()"][contract_name]
+        contract_address = config["networks"][network.show_active()][contract_name]
         contract = Contract.from_abi(
             contract_type._name, contract_address, contract_type.abi
         )

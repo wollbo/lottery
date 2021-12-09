@@ -42,8 +42,8 @@ def end_lottery():
     tx.wait(1)
     ending_transaction = lottery.endLottery({"from": account})
     ending_transaction.wait(1)
-    time.sleep(60)
-    print(f'{lottery.recentWinner} is the winner!')
+    time.sleep(30)
+    print(f'{lottery.recentWinner()} is the winner!')
     # fund contract
     # then end 
 
@@ -51,3 +51,4 @@ def main():
     deploy_lottery()
     start_lottery()
     enter_lottery()
+    end_lottery()
