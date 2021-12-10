@@ -11,7 +11,6 @@ contract Lottery is VRFConsumerBase, Ownable {
 
     address payable[] public players;
     address payable public recentWinner;
-    address public admin;
     uint256 public randomness;
     uint256 public usdEntryFee;
     AggregatorV3Interface internal ethUsdPriceFeed;
@@ -27,7 +26,8 @@ contract Lottery is VRFConsumerBase, Ownable {
         address _vrfCoordinator, 
         address _link,
         uint256 _fee,
-        bytes32 _keyhash) public VRFConsumerBase(_vrfCoordinator, _link) {
+        bytes32 _keyhash
+    ) public VRFConsumerBase(_vrfCoordinator, _link) {
         usdEntryFee = 50 * (10**18);
         ethUsdPriceFeed = AggregatorV3Interface(_priceFeedAddress);
         fee = _fee;

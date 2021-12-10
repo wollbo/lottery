@@ -12,7 +12,7 @@ def deploy_lottery():
         config["networks"][network.show_active()]["fee"],
         config["networks"][network.show_active()]["keyhash"],
         {"from": account},
-        publish_source=config["networks"][network.show_active()].get("verify", False)
+        publish_source=config["networks"][network.show_active()].get("verify", True)
     )
     print("Deployed lottery!")
     return lottery
@@ -42,7 +42,7 @@ def end_lottery():
     tx.wait(1)
     ending_transaction = lottery.endLottery({"from": account})
     ending_transaction.wait(1)
-    time.sleep(30)
+    time.sleep(100)
     print(f'{lottery.recentWinner()} is the winner!')
     # fund contract
     # then end 
